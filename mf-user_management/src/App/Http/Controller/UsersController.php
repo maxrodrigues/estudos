@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class UsersController
 {
-    public function index(ServerRequestInterface $request, ResponseInterface $response, $args)
+    public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface
     {
         $response->getBody()->write('Hello world in users controller!');
         return $response;
