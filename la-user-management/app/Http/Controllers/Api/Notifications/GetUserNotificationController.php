@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\Users;
+namespace App\Http\Controllers\Api\Notifications;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class GetUserController extends Controller
+class GetUserNotificationController extends Controller
 {
-    public function __invoke($user)
+    public function __invoke()
     {
         try {
             return new JsonResponse([], Response::HTTP_OK);

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class GetUserController extends Controller
+class UpdateStatusController extends Controller
 {
     public function __invoke($user)
     {
