@@ -21,16 +21,11 @@ class StoreController extends Controller
     {
         try {
             $data = $request->validated();
+            $user = $this->service->createNewUser($data);
 
-            $this->service->createNewUser($data);
-
-            return new JsonResponse(['data' => [
-                'content' => $data,
-            ]], Response::HTTP_CREATED);
+            return new JsonResponse(['data' => $user], Response::HTTP_CREATED);
         } catch (\Exception $exception) {
-            return new JsonResponse([
-                'message' => $exception->getMessage(),
-            ], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['message' => $exception->getMessage(),], Response::HTTP_BAD_REQUEST);
         }
     }
 }

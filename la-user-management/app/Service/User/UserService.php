@@ -18,6 +18,7 @@ class UserService implements UserServiceContract
     public function createNewUser(array $attributes): Collection
     {
         $attributes['password'] = Hash::make($attributes['password']);
-        return collect($this->userRepository->create($attributes));
+        return collect($this->userRepository->create($attributes))
+            ->forget(['password', 'id', 'created_at', 'updated_at']);
     }
 }

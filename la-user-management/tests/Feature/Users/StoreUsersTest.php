@@ -3,14 +3,20 @@
 use function Pest\Faker\fake;
 
 it ('create new user', function () {
-    $response = $this->post(route('user.store'), [
+    $attributes = [
         'name' => fake()->name,
         'email' => fake()->email,
         'password' => 'password',
         'password_confirmation' => 'password',
-    ]);
+    ];
 
+    $response = $this->post(route('user.store'), $attributes);
+    unset($attributes['password']);
+    unset($attributes['password_confirmation']);
+
+    $response->assertJson(['data' => $attributes]);
     $response->assertStatus(201);
+    $this->assertDatabaseCount('users', 1);
 });
 
 it ('return error when required field is empty', function () {
