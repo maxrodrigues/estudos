@@ -8,6 +8,7 @@ it ('create new user', function () {
         'email' => fake()->email,
         'password' => 'password',
         'password_confirmation' => 'password',
+        'role_id' => \App\Models\Role::factory()->create()->id,
     ];
 
     $response = $this->post(route('user.store'), $attributes);
