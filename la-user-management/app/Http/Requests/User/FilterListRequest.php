@@ -23,7 +23,7 @@ class FilterListRequest extends FormRequest
     {
         return [
             'page' => 'sometimes|integer|min:1',
-            'filters' => 'sometimes|array:active',
+            'filters' => 'sometimes|array:active,role',
         ];
     }
 }
